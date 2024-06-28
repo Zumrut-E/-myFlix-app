@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie API Documentation</title>
+</head>
+<body>
+    <h1>Movie API Documentation</h1>
+    <h2>Endpoints</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Request</th>
+                <th>URL</th>
+                <th>Response</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/movies</td>
+                <td>Returns a list of all movies</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/movies/:title</td>
+                <td>Returns data about a single movie by title</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/genres/:name</td>
+                <td>Returns data about a genre by name</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/directors/:name</td>
+                <td>Returns data about a director by name</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/users</td>
+                <td>Allows new users to register</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/users/:username</td>
+                <td>Allows users to update their user info</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/users/:username/favorites</td>
+                <td>Allows users to add a movie to their list of favorites</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/users/:username/favorites/:movieId</td>
+                <td>Allows users to remove a movie from their list of favorites</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/users/:username</td>
+                <td>Allows existing users to deregister</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Endpoint Details</h2>
+
+    <h3>GET /movies</h3>
+    <p>Returns a list of all movies.</p>
+    <p><strong>URL:</strong> /movies</p>
+    <p><strong>Method Type:</strong> GET</p>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    [
+        {
+            "title": "Inception",
+            "description": "A mind-bending thriller",
+            "genre": {
+                "name": "Thriller",
+                "description": "Suspenseful movies"
+            },
+            "director": {
+                "name": "Christopher Nolan",
+                "bio": "British-American film director",
+                "birth_year": 1970,
+                "death_year": null
+            },
+            "image_url": "url_to_image",
+            "is_featured": true
+        },
+        {
+            "title": "The Dark Knight",
+            "description": "Batman battles the Joker",
+            "genre": {
+                "name": "Thriller",
+                "description": "Suspenseful movies"
+            },
+            "director": {
+                "name": "Christopher Nolan",
+                "bio": "British-American film director",
+                "birth_year": 1970,
+                "death_year": null
+            },
+            "image_url": "url_to_image",
+            "is_featured": true
+        }
+    ]
+    </pre>
+
+    <h3>GET /movies/:title</h3>
+    <p>Returns data about a single movie by title.</p>
+    <p><strong>URL:</strong> /movies/:title</p>
+    <p><strong>Method Type:</strong> GET</p>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "title": "Inception",
+        "description": "A mind-bending thriller",
+        "genre": {
+            "name": "Thriller",
+            "description": "Suspenseful movies"
+        },
+        "director": {
+            "name": "Christopher Nolan",
+            "bio": "British-American film director",
+            "birth_year": 1970,
+            "death_year": null
+        },
+        "image_url": "url_to_image",
+        "is_featured": true
+    }
+    </pre>
+
+    <h3>GET /genres/:name</h3>
+    <p>Returns data about a genre by name.</p>
+    <p><strong>URL:</strong> /genres/:name</p>
+    <p><strong>Method Type:</strong> GET</p>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "name": "Thriller",
+        "description": "Suspenseful movies"
+    }
+    </pre>
+
+    <h3>GET /directors/:name</h3>
+    <p>Returns data about a director by name.</p>
+    <p><strong>URL:</strong> /directors/:name</p>
+    <p><strong>Method Type:</strong> GET</p>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "name": "Christopher Nolan",
+        "bio": "British-American film director",
+        "birth_year": 1970,
+        "death_year": null
+    }
+    </pre>
+
+    <h3>POST /users</h3>
+    <p>Allows new users to register.</p>
+    <p><strong>URL:</strong> /users</p>
+    <p><strong>Method Type:</strong> POST</p>
+    <p><strong>Request Body:</strong></p>
+    <pre>
+    {
+        "username": "newUser",
+        "email": "newUser@example.com",
+        "password": "password",
+        "birthday": "1990-01-01"
+    }
+    </pre>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "_id": "60c72b2f9b1d4c0a1c8b4567",
+        "username": "newUser",
+        "email": "newUser@example.com",
+        "password": "hashed_password",
+        "birthday": "1990-01-01T00:00:00.000Z",
+        "favorite_movies": []
+    }
+    </pre>
+
+    <h3>PUT /users/:username</h3>
+    <p>Allows users to update their user info.</p>
+    <p><strong>URL:</strong> /users/:username</p>
+    <p><strong>Method Type:</strong> PUT</p>
+    <p><strong>Request Body:</strong></p>
+    <pre>
+    {
+        "email": "updatedEmail@example.com"
+    }
+    </pre>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "_id": "60c72b2f9b1d4c0a1c8b4567",
+        "username": "newUser",
+        "email": "updatedEmail@example.com",
+        "password": "hashed_password",
+        "birthday": "1990-01-01T00:00:00.000Z",
+        "favorite_movies": []
+    }
+    </pre>
+
+    <h3>POST /users/:username/favorites</h3>
+    <p>Allows users to add a movie to their list of favorites.</p>
+    <p><strong>URL:</strong> /users/:username/favorites</p>
+    <p><strong>Method Type:</strong> POST</p>
+    <p><strong>Request Body:</strong></p>
+    <pre>
+    {
+        "title": "Inception"
+    }
+    </pre>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "_id": "60c72b2f9b1d4c0a1c8b4567",
+        "username": "newUser",
+        "email": "newUser@example.com",
+        "password": "hashed_password",
+        "birthday": "1990-01-01T00:00:00.000Z",
+        "favorite_movies": ["60c72b319b1d4c0a1c8b4568"]
+    }
+    </pre>
+
+    <h3>DELETE /users/:username/favorites/:movieId</h3>
+    <p>Allows users to remove a movie from their list of favorites.</p>
+    <p><strong>URL:</strong> /users/:username/favorites/:movieId</p>
+    <p><strong>Method Type:</strong> DELETE</p>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "_id": "60c72b2f9b1d4c0a1c8b4567",
+        "username": "newUser",
+        "email": "newUser@example.com",
+        "password": "hashed_password",
+        "birthday": "1990-01-01T00:00:00.000Z",
+        "favorite_movies": []
+    }
+    </pre>
+
+    <h3>DELETE /users/:username</h3>
+    <p>Allows existing users to deregister.</p>
+    <p><strong>URL:</strong> /users/:username</p>
+    <p><strong>Method Type:</strong> DELETE</p>
+    <p><strong>Response Format:</strong> JSON</p>
+    <p><strong>Example Response:</strong></p>
+    <pre>
+    {
+        "_id": "60c72b2f9b1d4c0a1c8b4567",
+        "username": "newUser",
+        "email": "newUser@example.com",
+        "password": "hashed_password",
+        "birthday": "1990-01-01T00:00:00.000Z",
+        "favorite_movies": []
+    }
+    </pre>
+</body>
+</html>
