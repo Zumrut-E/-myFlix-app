@@ -1,19 +1,29 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const app = express();
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 const { Movie, User } = require('./models');
-const auth = require('./auth')(app);
+const auth = require('./auth');
 
-const port = process.env.PORT || 8081
+const app = express();
+const port = process.env.PORT || 8081;
+
+// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/movies_app');
 
+// Middleware to parse JSON and URL-encoded bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Initialize passport
 app.use(passport.initialize());
 
+// Enable CORS
 app.use(cors());
+
+// Use authentication routes
+auth(app);
 
 // Protected routes
 app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
@@ -65,10 +75,10 @@ app.get('/directors/:name', passport.authenticate('jwt', { session: false }), as
 });
 
 app.post('/users', [
-  check('Username', 'Username is required').isLength({ min: 5 }),
-  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-  check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()
+  check('username', 'Username is required').isLength({ min: 5 }),
+  check('username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('password', 'Password is required').not().isEmpty(),
+  check('email', 'Email does not appear to be valid').isEmail()
 ], async (req, res) => {
   const errors = validationResult(req);
 
@@ -77,18 +87,18 @@ app.post('/users', [
   }
 
   try {
-    const hashedPassword = Users.hashPassword(req.body.Password);
+    const hashedPassword = User.hashPassword(req.body.password);
 
-    const existingUser = await Users.findOne({ Username: req.body.Username });
+    const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser) {
-      return res.status(400).send(`${req.body.Username} already exists`);
+      return res.status(400).send(`${req.body.username} already exists`);
     }
 
-    const newUser = await Users.create({
-      Username: req.body.Username,
-      Password: hashedPassword,
-      Email: req.body.Email,
-      Birthday: req.body.Birthday
+    const newUser = await User.create({
+      username: req.body.username,
+      password: hashedPassword,
+      email: req.body.email,
+      birthday: req.body.birthday
     });
 
     return res.status(201).json(newUser);
@@ -146,7 +156,6 @@ app.delete('/users/:username/favorites/:movieId', passport.authenticate('jwt', {
   }
 });
 
-
-app.listen(port, '0.0.0.0',() => {
- console.log('Listening on Port ' + port);
+app.listen(port, '0.0.0.0', () => {
+  console.log('Listening on Port ' + port);
 });

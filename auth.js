@@ -1,12 +1,12 @@
-// auth.js
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 
-require('./passport'); 
+require('./passport');
 
 router.post('/login', (req, res, next) => {
+  console.log('Request body:', req.body); // Debugging line
   passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err || !user) {
       console.log('Authentication failed:', err, info); // Debugging line

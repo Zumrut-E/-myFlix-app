@@ -9,42 +9,11 @@ passport.use(new LocalStrategy({
   passwordField: 'password'
 }, async (username, password, done) => {
   try {
-    const user = await User.findOne({ username: username }).exec();
+    const user = await User.findOne({ username }).exec();
     if (!user) {
       return done(null, false, { message: 'Incorrect username.' });
     }
-    if (password !== user.password) {passport.use(
-  new LocalStrategy(
-    {
-      usernameField: 'Username',
-      passwordField: 'Password',
-    },
-    async (username, password, callback) => {
-      console.log(`${username} ${password}`);
-      await Users.findOne({ Username: username })
-      .then((user) => {
-        if (!user) {
-          console.log('incorrect username');
-          return callback(null, false, {
-            message: 'Incorrect username or password.',
-          });
-        }
-        if (!user.validatePassword(password)) {
-          console.log('incorrect password');
-          return callback(null, false, { message: 'Incorrect password.' });
-        }
-        console.log('finished');
-        return callback(null, user);
-      })
-      .catch((error) => {
-        if (error) {
-          console.log(error);
-          return callback(error);
-        }
-      })
-    }
-  )
-);
+    if (!user.validatePassword(password)) {
       return done(null, false, { message: 'Incorrect password.' });
     }
     return done(null, user);
@@ -61,9 +30,8 @@ passport.use(new JWTStrategy({
     const user = await User.findById(jwtPayload._id).exec();
     if (user) {
       return done(null, user);
-    } else {
-      return done(null, false);
     }
+    return done(null, false);
   } catch (err) {
     return done(err);
   }
