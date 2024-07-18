@@ -5,13 +5,19 @@ const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 const { Movie, User } = require('./models');
 const auth = require('./auth');
-
+require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 8081;
 
 // Connect to MongoDB
 // mongoose.connect('mongodb://localhost:27017/movies_app');
-mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+  });
 
 
 // Middleware to parse JSON and URL-encoded bodies
