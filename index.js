@@ -10,7 +10,9 @@ const app = express();
 const port = process.env.PORT || 8081;
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/movies_app');
+// mongoose.connect('mongodb://localhost:27017/movies_app');
+mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 // Middleware to parse JSON and URL-encoded bodies
 app.use(express.json());
@@ -159,3 +161,7 @@ app.delete('/users/:username/favorites/:movieId', passport.authenticate('jwt', {
 app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
 });
+
+
+
+
