@@ -129,11 +129,11 @@ app.put('/users/:username', passport.authenticate('jwt', { session: false }), as
   }
 });
 
-app.post('/users/:username/favorites', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.post('/users/:username/favorites/:movieId', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
     if (user) {
-      const movie = await Movie.findOne({ title: req.body.title });
+      const movie = await Movie.findOne({ movieId: req.params.movieId });
       if (movie && !user.favorite_movies.includes(movie._id)) {
         user.favorite_movies.push(movie._id);
         await user.save();
