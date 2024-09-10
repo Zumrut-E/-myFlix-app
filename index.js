@@ -133,7 +133,7 @@ app.post('/users/:username/favorites/:movieId', passport.authenticate('jwt', { s
   try {
     const user = await User.findOne({ username: req.params.username });
     if (user) {
-      const movie = await Movie.findOne({ movieId: req.params.movieId });
+      const movie = await Movie.findOne({ _id: req.params.movieId });
       if (movie && !user.favorite_movies.includes(movie._id)) {
         user.favorite_movies.push(movie._id);
         await user.save();
