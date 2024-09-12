@@ -164,6 +164,19 @@ app.delete('/users/:username/favorites/:movieId', passport.authenticate('jwt', {
   }
 });
 
+app.delete('/users/:username', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    const deletedUser = await User.findOneAndRemove({ username: req.params.username });
+    if (deletedUser) {
+      res.status(200).json({ message: 'User deleted successfully.' });
+    } else {
+      res.status(404).json({ message: 'User not found.' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'There was an error deleting the user.', error: error.message });
+  }
+});
+
 app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
 });
