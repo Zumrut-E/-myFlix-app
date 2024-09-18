@@ -4,7 +4,7 @@ db.movies.insertMany([
     description: "A mind-bending thriller",
     genre: { name: "Thriller", description: "Suspenseful movies" },
     director: { name: "Christopher Nolan", bio: "British-American film director", birth_year: 1970, death_year: null },
-    image_url: "url_to_image",
+    image_url: "https://m.media-amazon.com/images/I/71RotCbGTML._AC_SY879_.jpg",
     is_featured: true
   },
   {
@@ -12,7 +12,7 @@ db.movies.insertMany([
     description: "Batman battles the Joker",
     genre: { name: "Thriller", description: "Suspenseful movies" },
     director: { name: "Christopher Nolan", bio: "British-American film director", birth_year: 1970, death_year: null },
-    image_url: "url_to_image",
+    image_url: "https://m.media-amazon.com/images/I/81YmUpKBTYL._AC_SY879_.jpg",
     is_featured: true
   },
   {
@@ -20,7 +20,7 @@ db.movies.insertMany([
     description: "Interwoven tales of crime",
     genre: { name: "Drama", description: "Serious, narrative movies" },
     director: { name: "Quentin Tarantino", bio: "American film director", birth_year: 1963, death_year: null },
-    image_url: "url_to_image",
+    image_url: "https://m.media-amazon.com/images/I/71vTnpKW5lL._AC_SX679_.jpg",
     is_featured: false
   },
   {
@@ -28,7 +28,7 @@ db.movies.insertMany([
     description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
     genre: { name: "Drama", description: "Serious, plot-driven presentations, portraying realistic characters, settings, life situations, and stories involving intense character development and interaction." },
     director: { name: "Frank Darabont", bio: "Frank Darabont is a film director, screenwriter and producer who has been nominated for three Academy Awards and a Golden Globe Award.", birth_year: 1959, death_year: null },
-    image_url: "http://image1.url",
+    image_url: "https://m.media-amazon.com/images/I/614DV+nDN3L._AC_SX679_.jpg",
     is_featured: true
   },
   {
@@ -36,7 +36,7 @@ db.movies.insertMany([
     description: "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
     genre: { name: "Drama", description: "Serious, plot-driven presentations, portraying realistic characters, settings, life situations, and stories involving intense character development and interaction." },
     director: { name: "Frank Darabont", bio: "Frank Darabont is a film director, screenwriter and producer who has been nominated for three Academy Awards and a Golden Globe Award.", birth_year: 1959, death_year: null },
-    image_url: "http://image2.url",
+    image_url: "https://m.media-amazon.com/images/I/7166M3PymVL._AC_SL1500_.jpg",
     is_featured: false
   },
   {
@@ -44,7 +44,7 @@ db.movies.insertMany([
     description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     genre: { name: "Sci-Fi", description: "Science fiction (or sci-fi) is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science." },
     director: { name: "Christopher Nolan", bio: "Christopher Nolan is a British-American film director, producer, and screenwriter. His films have grossed over US$5 billion worldwide, and he has received 34 Oscar nominations and ten wins.", birth_year: 1970, death_year: null },
-    image_url: "http://image5.url",
+    image_url: "https://m.media-amazon.com/images/I/61FOhsN1JwL.__AC_SX300_SY300_QL70_ML2_.jpg",
     is_featured: false
   },
   {
@@ -52,7 +52,7 @@ db.movies.insertMany([
     description: "When a simple jewelry heist goes horribly wrong, the surviving criminals begin to suspect that one of them is a police informant.",
     genre: { name: "Crime", description: "Crime films, in the broadest sense, is a film genre inspired by and analogous to the crime fiction literary genre." },
     director: { name: "Quentin Tarantino", bio: "Quentin Jerome Tarantino is an American film director, screenwriter, producer, and actor. His films have been characterized by nonlinear storylines, satirical subject matter, and an aestheticization of violence.", birth_year: 1963, death_year: null },
-    image_url: "http://image7.url",
+    image_url: "https://m.media-amazon.com/images/I/61g1gZh5A0L._AC_UL320_.jpg",
     is_featured: false
   },
   {
@@ -60,7 +60,7 @@ db.movies.insertMany([
     description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
     genre: { name: "Crime", description: "Crime films, in the broadest sense, is a film genre inspired by and analogous to the crime fiction literary genre." },
     director: { name: "Francis Ford Coppola", bio: "Francis Ford Coppola is an American film director, producer, and screenwriter. He was a central figure in the New Hollywood filmmaking movement of the 1960s and 1970s.", birth_year: 1939, death_year: null },
-    image_url: "http://image8.url",
+    image_url: "https://m.media-amazon.com/images/I/71zcibmp6+L._AC_SY300_SX300_.jpg",
     is_featured: true
   },
   {
@@ -68,7 +68,7 @@ db.movies.insertMany([
     description: "A young boy lives in a small floating temple on a beautiful lake, together with an elderly master who teaches him the ways of the Buddha. Years later the boy, now a young man, experiences his sexual awakening with a girl who has come to the temple to be healed by the master. The youth runs away to the outside world but his lust turns his life into hell, so he returns to the temple to find spiritual enlightenment.",
     genre: { name: "Drama", description: "A genre that relies on the emotional and relational development of realistic characters. While Drama film relies heavily on this kind of development, dramatic themes play a large role in the plot as well." },
     director: { name: "Kim Ki-duk", bio: "Kim Ki-duk was a South Korean film director and screenwriter, noted for his idiosyncratic art-house cinematic works. His films have received many distinctions in the festival circuit, making him one of the most important contemporary Asian film directors.", birth_year: 1960, death_year: 2020 },
-    image_url: "http://image9.url",
+    image_url: "https://m.media-amazon.com/images/I/91X-H+FGG8L._SL1500_.jpg",
     is_featured: true
   },
   {
@@ -76,7 +76,7 @@ db.movies.insertMany([
     description: "Aydin, a former actor, runs a small hotel in central Anatolia with his young wife Nihal with whom he has a stormy relationship and his sister Necla who is suffering from her recent divorce. In winter as the snow begins to fall, the hotel turns into a shelter but also an inescapable place that fuels their animosities...",
     genre: { name: "Drama", description: "A genre that relies on the emotional and relational development of realistic characters. While Drama film relies heavily on this kind of development, dramatic themes play a large role in the plot as well." },
     director: { name: "Nuri Bilge Ceylan", bio: "Nuri Bilge Ceylan is a Turkish film director, photographer, screenwriter and actor. He was the winner of the Palme d'Or, the highest prize at the Cannes Film Festival, in 2014.", birth_year: 1959, death_year: null },
-    image_url: "http://image10.url",
+    image_url: "https://m.media-amazon.com/images/I/81b3xlZhfmL._AC_UL320_.jpg",
     is_featured: false
   }
 ]);
