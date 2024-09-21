@@ -166,7 +166,7 @@ app.delete('/users/:username/favorites/:movieId', passport.authenticate('jwt', {
 
 app.delete('/users/:username', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
-    const deletedUser = await User.findoneanddelete({ username: req.params.username });
+    const deletedUser = await User.findOneAndDelete({ username: req.params.username });
     if (deletedUser) {
       res.status(200).json({ message: 'User deleted successfully.' });
     } else {
